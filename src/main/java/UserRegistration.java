@@ -54,4 +54,15 @@ public class UserRegistration {
             return false;
         }
     }
+
+    //uc7
+    static Pattern passwordRule3 = Pattern.compile(("^(?=[a-z]*[A-Z])(?=.*[0-9]).{8,}$"));
+    public boolean checkPassword3(String userPassword){
+        Matcher matcher= passwordRule3.matcher(userPassword);
+        if (matcher.matches()){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
