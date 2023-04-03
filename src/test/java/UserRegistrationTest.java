@@ -42,12 +42,24 @@ public class UserRegistrationTest {
 
     @Test
     public void passwordHappyTest(){
-        boolean password = user.checkPassword("Sukanyaam");
+        boolean password = user.checkPassword1("Sukanyaam");
         Assert.assertTrue(password);
     }
     @Test
     public void passwordSadTest(){
-        boolean password = user.checkPassword("Sukanya123");
+        boolean password = user.checkPassword1("Sukanya123");
         Assert.assertFalse(password);
     }
+
+    @Test
+    public void passwordHappyTest(){
+        boolean password = user.checkPassword2("Sukanyaam");
+        Assert.assertTrue(password);
+    }
+    @Test
+    public void passwordSadTest(){
+        boolean password = user.checkPassword2("Sukanya123");
+        Assert.assertFalse(password);
+    }
+
 }
