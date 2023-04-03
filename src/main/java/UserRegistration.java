@@ -33,4 +33,14 @@ public class UserRegistration {
             return false;
         }
     }
+
+    static Pattern passwordRule1 = Pattern.compile("^[A-Z][a-z]{8,}$");
+    public boolean checkPassword(String userPassword){
+        Matcher matcher= passwordRule1.matcher(userPassword);
+        if (matcher.matches()){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

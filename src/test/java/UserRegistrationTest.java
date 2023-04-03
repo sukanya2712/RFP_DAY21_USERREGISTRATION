@@ -19,15 +19,35 @@ public class UserRegistrationTest {
     }
 
     @Test
+    public void firstNameSadTest(){
+        boolean firstName = user.checkFirstName("sukanya");
+        Assert.assertFalse(firstName);
+    }
+    @Test
     public void checkLastNameHappyTest(){
         boolean lastName = user.checkLastName("Vardam");
         Assert.assertTrue(lastName);
     }
 
     @Test
+    public void checkLastNameSadTest(){
+        boolean lastName = user.checkLastName("aardam");
+        Assert.assertFalse(lastName);
+    }
+    @Test
     public void phoneNumberHappyTest(){
         boolean phoneNumber = user.checkMobileNumber("919930516251");
         Assert.assertTrue(phoneNumber);
     }
 
+    @Test
+    public void passwordHappyTest(){
+        boolean password = user.checkPassword("Sukanyaam");
+        Assert.assertTrue(password);
+    }
+    @Test
+    public void passwordSadTest(){
+        boolean password = user.checkPassword("Sukanya123");
+        Assert.assertFalse(password);
+    }
 }
