@@ -22,4 +22,15 @@ public class UserRegistration {
             return false;
         }
     }
+
+    //uc3
+    static Pattern mobileNumber = Pattern.compile("^([0-9]{2,4})?[\s]?[0-9]{10}$");
+    public boolean checkMobileNumber(String userNumber){
+        Matcher matcher= mobileNumber.matcher(userNumber);
+        if (matcher.matches()){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

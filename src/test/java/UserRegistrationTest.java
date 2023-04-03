@@ -24,4 +24,10 @@ public class UserRegistrationTest {
         Assert.assertTrue(lastName);
     }
 
+    @Test
+    public void phoneNumberHappyTest(){
+        boolean phoneNumber = user.checkMobileNumber("919930516251");
+        Assert.assertTrue(phoneNumber);
+    }
+
 }
