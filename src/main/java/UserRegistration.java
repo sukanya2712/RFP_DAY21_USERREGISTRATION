@@ -65,4 +65,15 @@ public class UserRegistration {
             return false;
         }
     }
+
+
+    static Pattern passwordRule4 = Pattern.compile( "^(?=[a-z]*[A-Z])(?=.*[0-9])(?=.*[\\W_]).{8,}$");
+    public boolean checkPassword4(String userPassword){
+        Matcher matcher= passwordRule4.matcher(userPassword);
+        if (matcher.matches()){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
