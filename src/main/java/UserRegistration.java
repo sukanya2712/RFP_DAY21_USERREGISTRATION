@@ -44,6 +44,7 @@ public class UserRegistration {
         }
     }
 
+    //uc6
     static Pattern passwordRule2 = Pattern.compile("^(?=.*[A-Z]).{8,}$");
     public boolean checkPassword2(String userPassword){
         Matcher matcher= passwordRule2.matcher(userPassword);
