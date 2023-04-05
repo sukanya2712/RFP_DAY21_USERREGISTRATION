@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
+//UC11
 public class EmailTest {
     private String email;
     private boolean expectedResult;
