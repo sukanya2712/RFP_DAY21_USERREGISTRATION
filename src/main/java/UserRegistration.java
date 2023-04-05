@@ -1,5 +1,8 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+
+
 public class UserRegistration {
     static Pattern firstName= Pattern.compile("^[A-Z]{1}[a-z]{2,}");
     static Pattern lastName= Pattern.compile("^[A-Z]{1}[a-z]{2,}");
@@ -76,4 +79,20 @@ public class UserRegistration {
             return false;
         }
     }
+
+
+
+    public boolean validateEmail(String email){
+        Pattern sampleEmailPattern = Pattern.compile("^[0-9a-zA-Z]+([+.-]([a-z0-9A-Z]+))*[@][a-zA-Z0-9]+[.][a-z]{2,4}[,]?([.][a-z]{2,4})?$");
+        Matcher sampleEmailMatcher = sampleEmailPattern.matcher(email);
+        return isValid(sampleEmailMatcher);
+    }
+        public boolean isValid(Matcher matcher){
+            if (matcher.matches()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
 }
