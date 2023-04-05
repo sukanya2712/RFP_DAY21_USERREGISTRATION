@@ -4,6 +4,7 @@ import java.util.regex.Pattern;
 
 
 public class UserRegistration {
+    //uc10
     static Pattern firstName= Pattern.compile("^[A-Z]{1}[a-z]{2,}");
     static Pattern lastName= Pattern.compile("^[A-Z]{1}[a-z]{2,}");
     public boolean checkFirstName(String name) {

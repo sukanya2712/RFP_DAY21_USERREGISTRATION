@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class UserRegistrationTest {
+    //uc10
     UserRegistration user ;
     @BeforeEach
     public void initialize(){
