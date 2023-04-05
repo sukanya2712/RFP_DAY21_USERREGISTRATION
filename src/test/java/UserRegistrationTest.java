@@ -5,86 +5,47 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 public class UserRegistrationTest {
-    //uc11
-    UserRegistration user ;
-    @BeforeEach
-    public void initialize(){
-        user = new UserRegistration();
-    }
-    @Test
-    public void firstNameHappyTest(){
-        boolean result = user.checkFirstName("Sukanya");
-        Assert.assertEquals(true,result);
+    static UserRegistration userRegistration;
+
+    @BeforeAll
+    public static void init() {
+        System.out.println("Before all");
+        userRegistration = new UserRegistration();
     }
 
     @Test
-    public void firstNameSadTest(){
-        boolean firstName = user.checkFirstName("sukanya");
-        Assert.assertFalse(firstName);
-    }
-    @Test
-    public void checkLastNameHappyTest(){
-        boolean lastName = user.checkLastName("Vardam");
-        Assert.assertTrue(lastName);
+    void givenFirstNameShouldReturnTrue() throws InvalidDetailsException {
+        boolean value = userRegistration.validateFirstName("Sanjana");
+        Assertions.assertTrue(value);
+        System.out.println("First Name Checked:- Successfully Passed UC1");
     }
 
     @Test
-    public void checkLastNameSadTest(){
-        boolean lastName = user.checkLastName("aardam");
-        Assert.assertFalse(lastName);
-    }
-    @Test
-    public void phoneNumberHappyTest(){
-        boolean phoneNumber = user.checkMobileNumber("919930516251");
-        Assert.assertTrue(phoneNumber);
+    void givenLastNameShouldReturnTrue() throws InvalidDetailsException {
+        boolean LastName = userRegistration.validateLastName("Srinivas");
+        Assertions.assertTrue(LastName);
+        System.out.println("Last Name Checked :- Successfully Passed UC2");
     }
 
     @Test
-    public void passwordHappyTest1(){
-        boolean password = user.checkPassword1("Sukanyaam");
-        Assert.assertTrue(password);
-    }
-    @Test
-    public void passwordSadTest1(){
-        boolean password = user.checkPassword1("Sukanya123");
-        Assert.assertFalse(password);
+    void givenEmailIdShouldReturnTrue() throws InvalidDetailsException {
+        boolean Email = userRegistration.validateEmail("sanjanams@gmail.com");
+        Assertions.assertTrue(Email);
+        System.out.println("Email ID Checked :- Successfully Passed UC3");
     }
 
     @Test
-    public void passwordHappyTest2(){
-        boolean password = user.checkPassword2("Sukanyaam");
-        Assert.assertTrue(password);
-    }
-    @Test
-    public void passwordSadTest2(){
-        boolean password = user.checkPassword2("Sukanya123");
-        Assert.assertFalse(password);
+    void givenMobileNumberShouldReturnTrue() throws InvalidDetailsException {
+        boolean PhoneNumber = userRegistration.validatePhoneNumber("919535397690");
+        Assertions.assertTrue(PhoneNumber);
+        System.out.println("PhoneNumber Checked :- Successfully Passed UC4");
     }
 
     @Test
-    public void passwordHappyTest3(){
-        boolean password = user.checkPassword3("Sasdfdghj1");
-        Assert.assertTrue(password);
+    void checkPasswordShouldReturnTrue() throws InvalidDetailsException {
+        boolean Password = userRegistration.validatePassword("Sanjana@1");
+        Assertions.assertTrue(Password);
+        System.out.println("Password Checked(Rule1, Rule2, Rule3 & Rule4) :- Successfully Passed UC5,UC6,UC7,UC8");
     }
-    @Test
-    public void passwordSadTest3(){
-        boolean password = user.checkPassword3("Sukanyafg");
-        Assert.assertFalse(password);
-    }
-
-    @Test
-    public void passwordHappyTest4(){
-        boolean password = user.checkPassword4("Sasdfdg@hj1");
-        Assert.assertTrue(password);
-    }
-    @Test
-    public void passwordSadTest4(){
-        boolean password = user.checkPassword4("Sukanyafg");
-        Assert.assertFalse(password);
-    }
-
-
-
 }

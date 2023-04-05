@@ -1,99 +1,50 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-
 public class UserRegistration {
-    //uc11
-    static Pattern firstName= Pattern.compile("^[A-Z]{1}[a-z]{2,}");
-    static Pattern lastName= Pattern.compile("^[A-Z]{1}[a-z]{2,}");
-    public boolean checkFirstName(String name) {
-        Matcher matcher = firstName.matcher(name);
-        if (matcher.matches()){
-            return true;
-        }else {
 
-            return false;
-        }
+    public boolean validateFirstName(String firstName) throws InvalidDetailsException{
+        Pattern namePattern = Pattern.compile("^[A-Z]{1}[a-z]{3,}$");
+        Matcher firstNameMatcher = namePattern.matcher(firstName);
+        if(firstNameMatcher.matches())
+            return true;
+        else
+            throw new InvalidDetailsException("Invalid First Name!!!");
     }
 
-    //uc2
-    public boolean checkLastName(String userName){
-        Matcher matcher= lastName.matcher(userName);
-        if (matcher.matches()){
+    public boolean validateLastName(String lastName) throws InvalidDetailsException{
+        Pattern namePattern = Pattern.compile("^[A-Z]{1}[a-z]{3,}$");
+        Matcher lastNameMatcher = namePattern.matcher(lastName);
+        if(lastNameMatcher.matches())
             return true;
-        }else {
-            return false;
-        }
+        else
+            throw new InvalidDetailsException("Invalid Last Name!!!");
     }
 
-    //uc3
-    static Pattern mobileNumber = Pattern.compile("^([0-9]{2,4})?[\s]?[0-9]{10}$");
-    public boolean checkMobileNumber(String userNumber){
-        Matcher matcher= mobileNumber.matcher(userNumber);
-        if (matcher.matches()){
-            return true;
-        }else {
-            return false;
-        }
-    }
-
-    static Pattern passwordRule1 = Pattern.compile("^[A-Z][a-z]{8,}$");
-    public boolean checkPassword1(String userPassword){
-        Matcher matcher= passwordRule1.matcher(userPassword);
-        if (matcher.matches()){
-            return true;
-        }else {
-            return false;
-        }
-    }
-
-    //uc6
-    static Pattern passwordRule2 = Pattern.compile("^(?=.*[A-Z]).{8,}$");
-    public boolean checkPassword2(String userPassword){
-        Matcher matcher= passwordRule2.matcher(userPassword);
-        if (matcher.matches()){
-            return true;
-        }else {
-            return false;
-        }
-    }
-
-    //uc7
-    static Pattern passwordRule3 = Pattern.compile(("^(?=[a-z]*[A-Z])(?=.*[0-9]).{8,}$"));
-    public boolean checkPassword3(String userPassword){
-        Matcher matcher= passwordRule3.matcher(userPassword);
-        if (matcher.matches()){
-            return true;
-        }else {
-            return false;
-        }
-    }
-
-
-    static Pattern passwordRule4 = Pattern.compile( "^(?=[a-z]*[A-Z])(?=.*[0-9])(?=.*[\\W_]).{8,}$");
-    public boolean checkPassword4(String userPassword){
-        Matcher matcher= passwordRule4.matcher(userPassword);
-        if (matcher.matches()){
-            return true;
-        }else {
-            return false;
-        }
-    }
-
-
-
-    public boolean validateEmail(String email){
+    public boolean validateEmail(String email) throws InvalidDetailsException{
         Pattern sampleEmailPattern = Pattern.compile("^[0-9a-zA-Z]+([+.-]([a-z0-9A-Z]+))*[@][a-zA-Z0-9]+[.][a-z]{2,4}[,]?([.][a-z]{2,4})?$");
         Matcher sampleEmailMatcher = sampleEmailPattern.matcher(email);
-        return isValid(sampleEmailMatcher);
+        if(sampleEmailMatcher.matches())
+            return true;
+        else
+            throw new InvalidDetailsException("Invalid Email ID!!!");
     }
-        public boolean isValid(Matcher matcher){
-            if (matcher.matches()) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
+
+    public boolean validatePhoneNumber(String phoneNumber) throws InvalidDetailsException{
+        Pattern phoneNoPattern = Pattern.compile("^[0-9]{2}[0-9]{10}$");
+        Matcher phoneNoMatcher = phoneNoPattern.matcher(phoneNumber);
+        if(phoneNoMatcher.matches())
+            return true;
+        else
+            throw new InvalidDetailsException("Invalid Phone Number!!!");
+    }
+
+    public boolean validatePassword(String password) throws InvalidDetailsException{
+        Pattern passwordPattern = Pattern.compile("^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*?])[!@#$%^&*?A-Z+a-z0-9]{8,}$");
+        Matcher passwordMatcher = passwordPattern.matcher(password);
+        if(passwordMatcher.matches())
+            return true;
+        else
+            throw new InvalidDetailsException("Invalid Password!!!");
+    }
 }
